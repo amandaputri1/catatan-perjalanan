@@ -61,7 +61,7 @@
                                             <td>{{ $value->suhu}}</td>
                                             
                                             <td>
-                                                <a href="#" class="btn-sm btn-info">Show</a>
+                                                <a href="{{ route('catatan.show', $value->id) }}" class="btn-sm btn-info">Show</a>
                                                 <a href="{{ route('catatan.edit', $value->id) }}" class="btn-sm btn-warning">Edit</a>
                                              
                                                   <button type="submit" class="btn-sm btn-danger">Delete</button>

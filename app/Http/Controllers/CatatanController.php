@@ -52,9 +52,10 @@ class CatatanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Catatan $catatans)
+    public function show(Catatan $catatan)
     {
         //
+        return view('catatan.show', compact('catatan'));
     }
 
     /**

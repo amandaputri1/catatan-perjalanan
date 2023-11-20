@@ -35,7 +35,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="waktu">Jam</label>
-                                        <input type="text" class="form-control" name="waktu" id="waktu"
+                                        <input type="time" class="form-control" name="waktu" id="waktu"
                                             placeholder="Masukan jam">
                                     </div>
                                     <div class="form-group">

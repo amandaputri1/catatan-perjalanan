@@ -58,7 +58,7 @@
                         <td>{{ $value->suhu}}</td>
 
                         <td>
-                          <form action="{{route ('catatan.destroy', $value->id)}}" method="POST">
+                          <form action="{{ route ('catatan.destroy', $value->id)}}" method="POST">
                             @csrf
                             @method('DELETE')
                               <a href="{{ route('catatan.show', $value->id)}}" class="btn btn-sm btn-primary">Show</a>

@@ -13,8 +13,8 @@ class CatatanController extends Controller
     public function index()
     {
         //
-        $catatans = Catatan::all();
-        return view('catatan.index', compact('catatans'));
+        $catatan = Catatan::all();
+        return view('catatan.index', compact('catatan'));
     }
 
     /**
@@ -88,10 +88,10 @@ class CatatanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Catatan $catatans)
+    public function destroy(Catatan $catatan)
     {
         //
-        $catatans = Catatan::where('id', $catatans->id)->delete();
+        $catatan = Catatan::where('id', $catatan->id)->delete();
         return redirect()->route('catatan.index');
     }
 }

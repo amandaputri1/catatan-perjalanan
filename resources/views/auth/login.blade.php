@@ -1,79 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Log in</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Log in</title>
+    @include('style.css')
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset('admin/plugins/fontawesome-free/css/all.min.css') }}">
-  <!-- icheck bootstrap -->
-  <link rel="stylesheet" href="{{ asset('admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
-</head>
-<body class="hold-transition login-page">
-<div class="login-box">
-  <div class="login-logo">
-    <a href="../../index2.html"><b>LOGIN</b></a>
-  </div>
-  <!-- /.login-logo -->
-  <div class="card">
-    <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
-
-      <form action="{{ route('auth.authentication') }}" method="post">
-        @csrf
-        <div class="input-group mb-3">
-          <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Fullname" name="name" value="{{ @old('name') }}">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+<body>
+    <section style="margin-top: 150px;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    {{-- card --}}
+                    <div class="card">
+                        <div class="card-header text-center">
+                          <img src="{{ asset('img/logo-fix.png') }}" style="width: 200x; height: 40px"
+                                alt="Logo" srcset="">
+                            <h3>Login</h3>
+                        </div>
+                        <div class="card-body">
+                            <form action="{{ route('auth.authentication') }}" method="POST">
+                                @csrf
+                                <div class="row">
+                                    <div class="form-group has-icon-left">
+                                        <div class="position-relative">
+                                            <input type="text"
+                                                class="form-control @error('name') is-invalid @enderror"
+                                                placeholder="Full Name" id="email-horizontal-icon" name="name"
+                                                value="{{ old('name') }}">
+                                            <div class="form-control-icon">
+                                                <i class="fa fa-user"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @error('nama')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                                <div class="row">
+                                    <div class="form-group has-icon-left">
+                                        <div class="position-relative">
+                                            <input type="number"
+                                                class="form-control @error('nik') is-invalid @enderror"
+                                                placeholder="NIK" id="password-horizontal-icon" name="password"
+                                                value="{{ old('password') }}">
+                                            <div class="form-control-icon">
+                                                <i class="fa fa-address-card"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @error('password')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                                <div class="row mt-3">
+                                    <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
+                                </div>
+                            </form>
+                            <p class="mb-0 mt-2">
+                                <a href="{{ route('auth.register') }}" class="text-center">Register a new membership</a>
+                            </p>
+                        </div>
+                    </div>
+                    {{-- end card --}}
+                </div>
             </div>
-          </div>
         </div>
-        @error('name')
-          <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="NIK" name="password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
-        @error('password')
-          <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
-        <div class="row">
-          <div class="col-8">
-          </div>
-          <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-          </div>
-          <!-- /.col -->
-        </div>
-      </form>
-
-      <!-- /.social-auth-links -->
-      <p class="mb-0">
-        <a href="{{ route('auth.register')}}" class="text-center">Register a new membership</a>
-      </p>
-    </div>
-    <!-- /.login-card-body -->
-  </div>
-</div>
-<!-- /.login-box -->
-
-<!-- jQuery -->
-<script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('admin/dist/js/adminlte.min.js') }}"></script>
+    </section>
 </body>
+@include('style.js')
+
 </html>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Catatan;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class CatatanController extends Controller
@@ -12,39 +14,50 @@ class CatatanController extends Controller
      */
     public function index()
     {
-        //
-        $catatan = Catatan::all();
-        return view('catatan.index', compact('catatan'));
+        $user = Auth::user();
+
+        if ($user->role_id == 1) {
+            $catatans = Catatan::where('user_id', $user->id)->get();
+            return view('catatan.index', compact('catatans'));
+        };
+        if ($user->role_id == 2) {
+            $catatans = Catatan::all();
+            return view('catatan.index', compact('catatans'));
+        };
+        
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Catatan $catatan, User $user)
     {
         //
-        return view('catatan.create');
+        $user = User::all();
+        return view('catatan.create', compact('catatan', 'user'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Catatan $catatans)
+    public function store(Request $request, Catatan $catatan)
     {
         //
         $request->validate([
+            'user_id' => 'required',
             'tanggal' => 'required',
             'waktu' => 'required',
             'lokasi' => 'required',
             'suhu' => 'required',
            ]);
     
-           $catatans = new Catatan;
-           $catatans->tanggal = $request->tanggal;
-           $catatans->waktu = $request->waktu;
-           $catatans->lokasi = $request->lokasi;
-           $catatans->suhu = $request->suhu;
-           $catatans->save();
+           $catatan = new Catatan;
+           $catatan->user_id = $request->user_id;
+           $catatan->tanggal = $request->tanggal;
+           $catatan->waktu = $request->waktu;
+           $catatan->lokasi = $request->lokasi;
+           $catatan->suhu = $request->suhu;
+           $catatan->save();
     
            return redirect()->route('catatan.index');
     }
@@ -74,6 +87,7 @@ class CatatanController extends Controller
     {
         //
         $request->validate([
+            'nama' => 'required',
             'tanggal' => 'required',
             'waktu' => 'required',
             'lokasi' => 'required',
@@ -82,7 +96,7 @@ class CatatanController extends Controller
 
         $catatan->update($request->all());
 
-        return redirect()->route('catatan.index');
+        return redirect()->route('user.show', $catatan->user_id);
     }
 
     /**

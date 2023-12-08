@@ -4,24 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
-class Catatan extends Model
+class Role extends Model
 {
     use HasFactory;
-
-    protected $table = 'catatans';
+    protected $table = 'roles';
     protected $fillable = [
-        'user_id',
-        'tanggal',
-        'waktu',
-        'lokasi',
-        'suhu'
+        'role'
     ];
 
     public function user()
     {
-        return $this->hasOne(User::class, 'id', 'user_id');
+        return $this->belongsTo(User::class);
     }
-
-    
 }

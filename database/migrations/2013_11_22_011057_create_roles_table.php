@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('catatans', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user');
-            $table->foreign('user')->references('id')->on('users');
-            $table->date('tanggal');
-            $table->string('waktu', 20);
-            $table->string('lokasi', 100);
-            $table->string('suhu', 60);
+            $table->enum('role', ['user', 'admin'])->default('user');
             $table->timestamps();
         });
     }
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('catatans');
+        Schema::dropIfExists('roles');
     }
 };

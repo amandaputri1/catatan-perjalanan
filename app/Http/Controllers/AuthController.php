@@ -16,6 +16,7 @@ class AuthController extends Controller
             'logout', 'dashboard'
         ]);
     }
+
     // form register
     public function register()
     {
@@ -33,7 +34,8 @@ class AuthController extends Controller
         $user->create([
             'name'  => $request->name,
             'email' => $request->email,
-            'password'  => Hash::make($request->password)
+            'password'  => Hash::make($request->password),
+            'role_id'      => 1,
         ]);
 
         $credential = $request->only('name', 'password');
@@ -89,4 +91,5 @@ class AuthController extends Controller
 
         return redirect()->route('auth.login');
     }
+
 }

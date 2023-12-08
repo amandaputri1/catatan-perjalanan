@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CatatanController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+
 
 
 
@@ -24,6 +26,7 @@ Route::controller(AuthController::class)->group(function() {
     Route::post('/auth', 'authentication')->name('auth.authentication');
     Route::get('/dashboard', 'dashboard')->name('auth.dashboard');
     Route::post('/logout', 'logout')->name('auth.logout');
+    Route::get('/user/{id}', 'show')->name('user.show');
 });
 
 Route::get('/', function () {
@@ -31,3 +34,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/catatan', CatatanController::class)->middleware('auth');
+
+Route::get('/pengguna/{id}', [UserController::class, 'show'])->name('user.show');
+Route::get('/pengguna', [UserController::class, 'index'])->name('user.index');
+// Route::get('/user/{id}/catatan')

@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>@yield('title')</title>
-  @include('style.css')
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peduli Diri | @yield('title')</title>
+    @include('style.css')
 </head>
 
 <body style="background-image: url('template/dist/assets/static/images/bg.jpg')">
@@ -18,25 +18,13 @@
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header>
-            
-            @yield('content')
-            
 
-            <footer class="main-footer">
-                <div class="footer clearfix mb-0 text-muted">
-                    <div class="float-start">
-                        <p>2023 &copy; XII RPL 2</p>
-                    </div>
-                    <div class="float-end">
-                        <p>Crafted with <span class="text-danger"><i class="bi bi-heart-fill icon-mid"></i></span>
-                            by <a href="#">Amanda Putri</a></p>
-                    </div>
-                </div>
-            </footer>
+            @yield('content')
+
+            @include('separate.footer')
         </div>
     </div>
-@include('style.css')
-@include('style.js')
+    @include('style.js')
 </body>
 
 </html>

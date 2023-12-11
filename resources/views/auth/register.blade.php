@@ -15,6 +15,8 @@
                     {{-- card --}}
                     <div class="card">
                         <div class="card-header text-center">
+                            <img src="{{ asset('img/logo-fix.png') }}" style="width: 200x; height: 40px"
+                                alt="Logo" srcset="">
                             <h3>Register</h3>
                         </div>
                         <div class="card-body">

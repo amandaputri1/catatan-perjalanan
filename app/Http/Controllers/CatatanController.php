@@ -6,6 +6,7 @@ use App\Models\Catatan;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use PDF;
 
 class CatatanController extends Controller
 {
@@ -107,5 +108,13 @@ class CatatanController extends Controller
         //
         $catatan = Catatan::where('id', $catatan->id)->delete();
         return redirect()->route('catatan.index');
+    }
+
+    public function pdf()
+    {
+    	$catatan = Catatan::all();
+ 
+    	$pdf = PDF::loadview('pdf',['catatan'=>$catatan]);
+    	return $pdf->download('laporan-catatan-pdf');
     }
 }

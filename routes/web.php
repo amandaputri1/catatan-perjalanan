@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CatatanController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ExportController;
+
 
 
 
@@ -34,7 +36,10 @@ Route::get('/', function () {
 });
 
 Route::resource('/catatan', CatatanController::class)->middleware('auth');
+Route::get('/pdf', [ExportController::class, 'cetakpdf'])->name('cetak.pdf');
 
 Route::get('/pengguna/{id}', [UserController::class, 'show'])->name('user.show');
 Route::get('/pengguna', [UserController::class, 'index'])->name('user.index');
-// Route::get('/user/{id}/catatan')
+
+
+

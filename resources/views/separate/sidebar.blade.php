@@ -6,8 +6,8 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="logo">
                         <a href="{{ route('user.show', Auth::user()->name) }}">
-                            <img src="{{ asset('img/logo-fix.png') }}" style="width: 200x; height: 40px"
-                                alt="Logo" srcset="">
+                            <img src="{{ asset('img/logo-fix.png') }}" style="width: 200x; height: 40px" alt="Logo"
+                                srcset="">
                     </div>
 
                     <div class="sidebar-toggler  x">
@@ -44,7 +44,7 @@
                     </svg>
                 </div>
             </div>
-            <h5 class="text-center">Selamat Datang <br>{{ Auth::user()->name }} <br>di Aplikasi Peduli Diri</h5>
+            {{-- <h5 class="text-center">Selamat Datang <br>{{ Auth::user()->name }} <br>di Aplikasi Peduli Diri</h5> --}}
             <div class="sidebar-menu">
                 <ul class="menu">
                     <li class="sidebar-item active ">

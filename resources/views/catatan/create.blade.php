@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title', 'catatan')
 @section('content')
-<link rel="stylesheet" href="{{ asset('resources/views/style/css.blade.php') }}">
+    <link rel="stylesheet" href="{{ asset('resources/views/style/css.blade.php') }}">
 
     <body class="background-class">
         <div class="page-heading">

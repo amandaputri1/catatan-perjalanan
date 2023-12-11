@@ -36,7 +36,7 @@
                         <td>{{ $key + 1}}</td>
                         <td>{{ $value->user->name}}</td>
                         <td>
-                          <a href="{{ route('user.show', $value->user->id)}}" class="btn btn-sm btn-primary">Show</a>
+                          <a href="{{ route('user.show', $value->user->id)}}" class="btn btn-sm btn-primary">Detail</a>
                         </td>
                       </tr>
                     @empty

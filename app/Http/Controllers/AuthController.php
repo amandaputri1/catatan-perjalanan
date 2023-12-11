@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Catatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,7 @@ class AuthController extends Controller
         $request->validate([
             'name'  => 'required|string|max:250',
             'email' => 'required|email|max:250|unique:users,email',
-            'password'  => 'required|min:8'
+            'password'  => 'required|min:16'
         ]);
 
         $user->create([
@@ -75,9 +76,13 @@ class AuthController extends Controller
     // dashboard
     public function dashboard()
     {
+
+        $userId = Auth::id(); // Get the ID of the currently authenticated user
+        $jumlah_perjalanan = Catatan::where('user_id', $userId)->count();
+
         if(Auth::check())
         {
-            return view('auth.dashboard');
+            return view('auth.dashboard', compact('jumlah_perjalanan'));
         }
 
         return redirect()->route('auth.login');
